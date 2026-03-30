@@ -21,13 +21,11 @@
         margin: 0 auto;
         
     }
-    template {
-        background-color: #FEF7F7;
-    }
+    
     .container {
         display: flex;
         justify-content: space-between;
-        background-color: white;
+        background-color: #F7F7F7;
         padding: 10px;
         border-radius: 8px;
     }

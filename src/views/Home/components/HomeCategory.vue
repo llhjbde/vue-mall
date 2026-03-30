@@ -39,7 +39,7 @@
 <style scoped>
     .category {
         width: 200px;
-        background-color: #F7F7F7;
+        background-color: white;
         border-radius: 6px;
         padding: 15px;
         padding-left: 10px;
@@ -60,6 +60,6 @@
         align-items: center;
     }
     .list li:hover {
-        background-color: white;
+        background-color: #F7F7F7;
     }
 </style>
