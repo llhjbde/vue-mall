@@ -38,6 +38,7 @@
     .app-Header {
         width: 100%;
         /*background-color: #fcfbfb;*/
+        background-color: white;
     }
     .container {
         display: flex;
