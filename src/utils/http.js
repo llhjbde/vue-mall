@@ -3,7 +3,7 @@ import {ElMessage} from 'element-plus'
 
 //创建axios实例
 const request=axios.create({
-    baseURL:"http://121.36.47.7",
+    baseURL:"http://121.36.47.7:8080",
     timeout:5000
 })
 

@@ -15,6 +15,6 @@
 </template>
 <style scoped>
     div {
-        background-color: #FEF7F7;
+        background-color: #eceaea;
     }
 </style>
