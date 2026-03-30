@@ -4,7 +4,7 @@
     import * as Icons from '@element-plus/icons-vue'
 
     const list = ref([])
-    //const activeIndex = ref(null)
+    const activeIndex = ref(null)
 
     // 获取分类
     const getData = async () => {
@@ -29,10 +29,23 @@
                     <component :is="getIcon(item.icon)" />
                 </el-icon>
                 <span>{{ item.name }}</span>
+
+                <!--二级菜单-->
+                <div
+                    class="sub-menu"
+                    v-if="activeIndex === item.id && item.children?.length"
+                >
+                    <div 
+                        class="sub-item" 
+                        v-for="sub in item.children" 
+                        :key="sub.id"
+                    >
+                        {{ sub.name }}
+                    </div>
+                </div>
             </li>
         </ul>
 
-        <!--二级菜单-->
 
     </div>
 </template>
@@ -40,7 +53,7 @@
     .category {
         width: 200px;
         background-color: white;
-        border-radius: 6px;
+        border-radius: 8px;
         padding: 15px;
         padding-left: 10px;
     }

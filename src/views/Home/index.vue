@@ -26,7 +26,7 @@
         display: flex;
         justify-content: space-between;
         background-color: #F7F7F7;
-        padding: 10px;
+        padding: 13px;
         border-radius: 8px;
     }
 </style>
