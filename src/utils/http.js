@@ -4,7 +4,7 @@ import {ElMessage} from 'element-plus'
 //创建axios实例
 const request=axios.create({
     baseURL:"http://192.168.0.133:8080",
-    timeout:5000
+    timeout:10000
 })
 
 //请求拦截器

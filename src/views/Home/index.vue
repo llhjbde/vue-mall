@@ -17,14 +17,15 @@
 <style scoped>
     .homePage {
         width: 1200px;
-        height: 500px;
+        
         margin: 0 auto;
         
     }
     
     .container {
         display: flex;
-        justify-content: space-between;
+        gap: 15px;
+        /* justify-content: space-between; */
         background-color: #F7F7F7;
         padding: 13px;
         border-radius: 8px;

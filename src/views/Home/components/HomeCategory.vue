@@ -10,7 +10,7 @@
     const getData = async () => {
         const res = await getCategoryList()
         
-        
+        //console.log(res)
         list.value = res.list || []
     }
     onMounted(() => {
@@ -24,7 +24,11 @@
     <div class="category">
         <div class="title">分类</div>
         <ul class="list">
-            <li v-for="( item ) in list" :key="item.id">
+            <li 
+                v-for="( item ) in list" :key="item.id"
+                @mouseenter="activeIndex = item.id"
+                @mouseleave="activeIndex = null"
+            >
                 <el-icon class="icon">
                     <component :is="getIcon(item.icon)" />
                 </el-icon>
@@ -33,11 +37,11 @@
                 <!--二级菜单-->
                 <div
                     class="sub-menu"
-                    v-if="activeIndex === item.id && item.children?.length"
+                    v-if="activeIndex === item.id && item.parent_id?.length"
                 >
                     <div 
                         class="sub-item" 
-                        v-for="sub in item.children" 
+                        v-for="sub in item.parent_id" 
                         :key="sub.id"
                     >
                         {{ sub.name }}
@@ -51,11 +55,38 @@
 </template>
 <style scoped>
     .category {
-        width: 200px;
+        /* width: 200px; */
+        width: 100%;
+        max-width: 200px;
+        min-width: 160px;  
         background-color: white;
         border-radius: 8px;
         padding: 15px;
         padding-left: 10px;
+        
+    }
+    .list li {
+        position: relative;   
+    }
+    .sub-menu {
+        position: absolute;
+        left: 100%;
+        top: 0;
+        background: white;
+        border-radius: 6px;
+        padding: 10px 5px;
+        min-width: 120px;
+        border: 2px solid #FF5000;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .sub-item {
+        padding: 5px 10px;
+        color: #1F1F1F;
+        font-size: 15px;
+        border-radius: 5px;
+    }
+    .sub-item:hover {
+        background-color: #F7F7F7;
     }
     .title {
         font-size: 17px;
