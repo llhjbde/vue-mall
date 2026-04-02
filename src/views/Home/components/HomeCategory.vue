@@ -78,6 +78,7 @@
         min-width: 120px;
         border: 2px solid #FF5000;
         box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        z-index: 999; 
     }
     .sub-item {
         padding: 5px 10px;

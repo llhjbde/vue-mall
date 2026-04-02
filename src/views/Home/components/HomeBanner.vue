@@ -7,7 +7,7 @@
     //获取数据
     const getData = async () => {
         const res = await getBanner()
-        console.log(res);
+        //console.log(res);
         BannerList.value = res.list || []
     }
 
@@ -27,17 +27,21 @@
 <style scoped>
     .banner {
         flex: 1;
+        border-radius: 12px;
         
         background-color: white;
+        
     }
     .banner-img {
         width: 100%;
         height: 450px;
-        object-fit: cover; 
+         
+        
     }
-    .el-carousel__item {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+    .el-carousel-item {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+    }
 </style>

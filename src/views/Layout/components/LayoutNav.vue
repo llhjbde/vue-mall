@@ -62,6 +62,7 @@
 <style scoped>
     .app-topNav {
         background-color: #E93323;
+        /* background-color: #E3E4E5; */
         height: 40px;
         display: flex;
         align-items: center;
@@ -89,6 +90,7 @@
     }
     a {
         color: white;
+        /* color: #868883; */
         font-size: 14.5px;
     }
     a:hover {
