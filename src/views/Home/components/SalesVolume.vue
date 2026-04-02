@@ -1,7 +1,9 @@
 <script setup>
     import { getHotProduct } from '@/apis/home'
     import { ref , onMounted } from 'vue'
-
+    
+ 
+ 
     const list=ref([])
 
     // 获取商品数据
@@ -9,6 +11,8 @@
         const res = await getHotProduct()
         
         console.log(res)
+        console.log(res.msg);
+        
         list.value = res.list || []
     }
     onMounted(() => {
@@ -29,11 +33,11 @@
             </div>
             <div class="salelist">
                 <div class="card" v-for="item in list" :key="item.id">
-                    <img class="product-img" src="https://asearch.alicdn.com/bao/uploaded/O1CN01IFBGyV1ZMwmzSaJbT_!!4145993181.jpg" alt="">
+                    <img class="product-img" :src="item.main_image" alt="">
                     <div class="product-info">
-                        <div class="title">【独立包装】不多言芋泥牛奶泡芙雪媚娘</div>
+                        <div class="title">{{ item.subtitle }}</div>
                         <span class="sold">评分 {{ item.rating }}</span>
-                        <div class="price">￥ 36.00</div>
+                        <div class="price">￥ {{ item.price }}</div>
                     </div>
                 </div>
             </div>

@@ -3,14 +3,31 @@
     import { ArrowDownBold } from '@element-plus/icons-vue'
     import { useUserStore } from '@/stores/user'
     import { useRouter } from 'vue-router'
+    import { ElMessageBox, ElMessage } from 'element-plus'
+
 
     const router = useRouter()
     const userStore = useUserStore()
+    
     const handleLogout = () => {
-        userStore.logout()
-
-        // 跳转到首页或登录页
-        router.push('/login')
+    // 弹窗确认
+        ElMessageBox.confirm(
+            '确定要退出登录吗？', 
+            '提示', 
+            {
+                confirmButtonText: '确定',
+                cancelButtonText: '取消',
+                type: 'warning',
+            }
+        ).then(() => {
+            // 确认退出
+            userStore.logout()
+            ElMessage.success('已退出登录')
+            router.push('/login')
+        }).catch(() => {
+            // 取消操作
+            ElMessage.info('已取消退出')
+        })
     }
 </script>
 <template>
@@ -50,7 +67,7 @@
                         <!-- 下拉菜单 -->
                         <ul class="dropdown">
                             <li><a href="#">个人中心</a></li>
-                            <li><a href="#" @click="handleLogout">退出登录</a></li>
+                            <li><a href="#" @click.prevent="handleLogout">退出登录</a></li>
                         </ul>
                     </li>
                     <li><a href="#">我的订单</a></li>
