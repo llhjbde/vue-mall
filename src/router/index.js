@@ -6,7 +6,8 @@ import Home from '@/views/Home/index.vue'
 import Category from '@/views/Category/index.vue'
 
 import register from '@/views/register/index.vue'
-
+import Details from '@/views/Details/index.vue'
+import Administrator from '@/views/Administrator/index.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -20,8 +21,12 @@ const router = createRouter({
           component:Home
         },
         {
-          path:'category/id:',
+          path:'category/:id',
           component:Category
+        },
+        {
+          path:'details/:id',
+          component:Details
         }
       ]
       
@@ -34,6 +39,10 @@ const router = createRouter({
       path: '/register',
       component: register,
     },
+    {
+      path: '/Administrator',
+      component: Administrator
+    }
   ],
 })
 

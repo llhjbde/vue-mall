@@ -41,11 +41,13 @@
             </div>
             <div class="salelist" v-if="list.length">
                 <div class="card" v-for="item in list" :key="item.id + Math.random()">
-                    <img class="product-img" v-lazy="item.main_image"  alt="">
-                    <div class="product-info">
-                        <div class="title">{{ item.subtitle }}</div>
-                        <div class="price">￥ {{ item.price }}</div>
-                    </div>
+                    <RouterLink :to="`/details/${item.id}`">
+                        <img class="product-img" v-lazy="item.main_image"  alt="">
+                        <div class="product-info">
+                            <div class="title">{{ item.subtitle }}</div>
+                            <div class="price">￥ {{ item.price }}</div>
+                        </div>
+                    </RouterLink>
                 </div>
             </div>
             <div v-if="loading" class="loading">加载中...</div>
@@ -87,7 +89,9 @@
         font-weight: 500;
         color: #FF5000;
     }
-
+    .title {
+        color: #333333;
+    }
     .ProductTitle {
         display: flex;
         align-items: center;
@@ -95,6 +99,7 @@
         font-size: 25px;
         color: #FF0F23;
     }
+
     .loading {
         width: 100%;
         text-align: center;

@@ -67,6 +67,9 @@
         color: #666666;
         margin-top: 10px;
     }
+    .search-hot a:hover {
+        color: #FF455A;
+    }
     .search-bar input {
         height: 38px;
         width: 480px;

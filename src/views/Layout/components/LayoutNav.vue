@@ -40,7 +40,8 @@
                 <li><a href="#">
                     <el-icon><PhoneFilled /></el-icon>客服电话：4000-538-999
                 </a></li>
-                <li><a href="#">全部商品</a></li>
+                <li v-if="!userStore.token"><router-link to="/Administrator">管理员登录</router-link></li>
+                <li v-if="userStore.token"><a href="#">全部商品</a></li>
             </ul>
             <!--右侧导航栏-->
             <ul class="right-Nav">

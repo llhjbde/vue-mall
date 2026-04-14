@@ -40,13 +40,13 @@
             v-show="showBackTop" 
             class="back-top" 
             @click="backToTop">
-                <el-icon class="backTop"><Top /></el-icon>
+                <div class="backTop"><Top /></div>
         </button>
     </div>
 </template>
 <style scoped>
     .back-top {
-        position: fixed;       /* 固定在页面右下角 */
+        position: fixed;       
         right: 100px;
         bottom: 100px;
         width: 45px;
@@ -58,10 +58,9 @@
         border: none;
         border-radius: 50%;
         cursor: pointer;
+        line-height: 0;
         
-        align-items: center;
-        
-        z-index: 999;   
+        z-index: 5;   
         display: flex;             
         justify-content: center;  
         align-items: center;    
@@ -72,6 +71,13 @@
         box-shadow: 0 2px 6px rgba(0,0,0,0.2);
     }
     .backTop {
-        font-size: 40px;
+        width: 80%;
+        height: 80%;
+        font-size: 20px;
+        display: flex;
+        justify-content: center;  
+        align-items: center; 
+
+        
     }
 </style>

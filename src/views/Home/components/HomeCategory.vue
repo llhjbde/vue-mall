@@ -8,10 +8,33 @@
 
     // 获取分类
     const getData = async () => {
-        const res = await getCategoryList()
+        try{
+            const res = await getCategoryList()
         
-        //console.log(res)
-        list.value = res.list || []
+            //console.log(res)
+            list.value = res.list || []
+        }catch(e) {
+            console.log(e.msg);
+            list.value = [
+                {
+                    id: 1,
+                    name: '分类1',
+                    icon: 'House',
+                    children: [
+                        { id: 11, name: '子分类1' },
+                        { id: 12, name: '子分类2' }
+                    ]
+                },
+                {
+                    id: 2,
+                    name: '分类2',
+                    icon: 'User',
+                    children: [
+                        { id: 21, name: '子分类A' }
+                    ]
+                }
+        ]
+        }
     }
     onMounted(() => {
         getData()
@@ -30,21 +53,21 @@
                 @mouseleave="activeIndex = null"
             >
                 <el-icon class="icon">
-                    <component :is="getIcon(item.icon)" />
+                    <component :is="getIcon(item.icon)|| Icons.Menu" />
                 </el-icon>
                 <span>{{ item.name }}</span>
 
                 <!--二级菜单-->
                 <div
                     class="sub-menu"
-                    v-if="activeIndex === item.id && item.parent_id?.length"
+                    v-if="activeIndex === item.id && item.children?.length"
                 >
                     <div 
                         class="sub-item" 
-                        v-for="sub in item.parent_id" 
+                        v-for="sub in item.children" 
                         :key="sub.id"
                     >
-                        {{ sub.name }}
+                        <router-link :to="`/category/${sub.id}`">{{ sub.name }}</router-link>
                     </div>
                 </div>
             </li>
@@ -85,6 +108,9 @@
         color: #1F1F1F;
         font-size: 15px;
         border-radius: 5px;
+    }
+    a {
+        color: #1F1F1F;
     }
     .sub-item:hover {
         background-color: #F7F7F7;

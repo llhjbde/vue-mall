@@ -10,8 +10,9 @@
     const getData = async () => {
         const res = await getHotProduct()
         
-        console.log(res)
-        console.log(res.msg);
+        //console.log(res)
+        //console.log(res.list.length)
+        //console.log(res.msg);
         
         list.value = res.list || []
     }
@@ -33,12 +34,14 @@
             </div>
             <div class="salelist">
                 <div class="card" v-for="item in list" :key="item.id">
-                    <img class="product-img" :src="item.main_image" alt="">
-                    <div class="product-info">
-                        <div class="title">{{ item.subtitle }}</div>
-                        <span class="sold">评分 {{ item.rating }}</span>
-                        <div class="price">￥ {{ item.price }}</div>
-                    </div>
+                    <RouterLink :to="`/details/${item.id}`">
+                        <img class="product-img" :src="item.main_image" alt="">
+                        <div class="product-info">
+                            <div class="title">{{ item.subtitle }}</div>
+                            <span class="sold">评分 {{ item.rating }}</span>
+                            <div class="price">￥ {{ item.price }}</div>
+                        </div>
+                    </RouterLink>
                 </div>
             </div>
                 
@@ -77,6 +80,7 @@
         padding: 4px;
         user-select: none;
         border: 1px solid transparent; 
+        
     }
     .card:hover {
         border: 1px solid #FF5000;
@@ -97,7 +101,9 @@
         font-weight: 500;
         color: #FF5000;
     }
-
+    .title {
+        color: #333333;
+    }
 
     .ProductTitle {
         display: flex;
